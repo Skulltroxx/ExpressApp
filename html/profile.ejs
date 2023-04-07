@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SereneSoul</title>
+  <link rel="icon" href="/images/favicon-enhanced.png">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
+  <link rel="apple-touch-icon" href="../images/favicon-enhanced.png" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" text="text/CSS"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" text="text/CSS"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+
+  }
+
+  html {
+    scroll-behavior: smooth;
+
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  .back-top-wrap {
+    position: fixed;
+    bottom: 5rem;
+    right: 1rem;
+    background-color: #80F7D1;
+    padding: 1rem 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    z-index: 100;
+  }
+
+  .back-top-wrap:hover {
+    background-color: #00a2ff;
+    color: #80F7D1;
+  }
+
+  .back-top-wrap:hover .fas.fa-arrow-up {
+    color: white;
+  }
+
+  .fas.fa-arrow-up {
+    color: #00488F;
+    transition: 0.3s ease-in-out;
+  }
+
+  header {
+    height: 1em !important;
+    background-color: #03294e;
+    background-image: none;
+  }
+
+  nav {
+    background-color: rgb(25, 1, 54);
+
+  }
+
+  .main {
+    background-color: #052e57;
+    text-align: center;
+    min-height: 90vh;
+    color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('../images/landing-page-image.jpg');
+    background-size: cover;
+  }
+
+  .about h2{
+    display: inline-block;
+  }
+
+  .about img{
+    height: 200px;
+    width: auto;
+  }
+</style>
+
+<body onload="myFunction()">
+  <div class="loading-wrapper">
+    <img src="/images/s_logo.png" id="loading" />
+  </div>
+
+  <header style="min-height: 99px;">
+    <nav class="nav" id="nav">
+      <div>
+        <a class="navbar-brand" href="#!"> <img src="/images/s_logo.png" alt="Logo" class="logo" /></a>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <ul class="links" id="navmenu">
+          <li><a href="/">HOME</a></li>
+          <li><a href="/audio">AUDIO</a></li>
+          <li><a href="/yoga">YOGA</a></li>
+          <li><a href="/laugh">LAUGH</a></li>
+          <li><a href="/talking">TALK</a></li>
+          <li><a href="/spirituality">SPIRITUAL</a></li>
+          <li><a href="/logout">LOGOUT</a></li>
+        </ul>
+      </div>
+
+      </div>
+
+  </header>
+  <div class="main">
+    <h1 center style="color:crimson;"><u>User details</u></h1>
+    <br>
+    <div class="about">
+      <img src="../images/profilepic.png" alt="ProfilePic"><br>
+      <h2>Name:</h2><span id="username">
+        <%= user.username %>
+      </span><br>
+      <h2>Email:</h2><span id="email">
+        <%= user.email %>
+      </span>
+    </div>
+    <br><br><br>
+    <h1 center style="color: crimson; text-decoration: underline; padding-bottom: 5px;">Favourites</h1>
+    
+      <section id="videos">
+        <h2 class="section-headings">Videos</h2>
+          <div class="collection">
+            <% user.fav_videos.forEach((video) => { %>
+              <div class="video">
+                <iframe
+                  width="100%"
+                  height="330"
+                  src="<%= video %>"
+                  title="Video Title"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+                <form action="/profile" method="post">
+                  <input type="text" name="video_url" id="video_url" class="hidden" value="<%= video %>">
+                  <button type="submit" class="rounded-btn"><div>&#10006</div></button>
+                </form> 
+              </div>
+            <% }) %>
+          </div>
+      </section>
+      <section id="playlist">
+        <h2 class="section-headings">Music Playlists</h2>
+        <div class="container">
+          <% user.fav_music_playlist.forEach((playlist) => { %>
+          <div class="playlist" >
+            <iframe
+              style="border-radius: 12px"
+              src="<%= playlist %>"
+              width="100%"
+              height="380"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            ></iframe>
+            <form action="/profile" method="post">
+              <input type="text" name="playlist_url" id="playlist_url" class="hidden" value="<%= playlist %>">
+              <button type="submit" class="rounded-btn"><div>&#10006</div></button>
+            </form> 
+          </div>
+          <% }); %>
+        </div>
+      </section>
+      </div>
+      <br><br>
+      
+      <section id="podcasts">
+        <h2 class="sections-headings">Podcasts</h2>
+        <div class="container">
+          <% user.fav_podcasts.forEach((podcast) => { %>
+            <div class="show">
+              <iframe
+              src="<%= podcast %>"
+              width="100%"
+              height="105"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              ></iframe>
+              <form action="/profile" method="post">
+                <input type="text" name="podcast_url" id="podcast_url" class="hidden" value="<%= podcast %>">
+                <button type="submit" class="rounded-btn"><div>&#10006</div></button>
+              </form>            
+            </div>
+          <% }); %>
+        </div>
+      </section>
+
+
+
+
+  <!-- footer start -->
+  <footer>
+    <div class="footer-container">
+
+      <div class="col">
+
+        <img src="/images/logo.png" alt="logo" class="footlogo" />
+        <div class="footercontent">
+          <h2 class="footerheading">SereneSoul</h2>
+          <p class="footerpara">go stressfree</p>
+        </div>
+      </div>
+
+      <!--ADDRESS COLUMN-->
+
+      <div class="footer-side-col">
+        <div class="col">
+          <h3>
+            ADDRESS
+            <div class="underline"><span></span></div>
+          </h3>
+          <p>Vaishnavi CHS, Gorai ,Mumbai,India</p>
+          <p class="email-id"><a href="mailto:sukoon665@gmail.com">SereneSoul@gmail.com</a></p>
+        </div>
+        <!--HOME COLUMN-->
+        <div class="col">
+          <h3>HOME</h3>
+          <ul>
+            <li>
+              <a href="">Contribute</a>
+            </li>
+            <li>
+              <a href="">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <!--OUR SERVICES COLUMN-->
+        <div class="col">
+          <h3>
+            SERVICES
+            <div class="underline"><span></span></div>
+          </h3>
+          <ul>
+            <li>
+              <a href="/html/audioTherapy.html">Audio Therapy</a>
+            </li>
+            <li>
+              <a href="/html/yogatherapy.html">Yoga Therapy</a>
+            </li>
+
+
+            <li>
+              <a href="">Consult a Doctor</a>
+            </li>
+
+            <li>
+              <a href="/html/spirituality.html">Spiritual Therapy</a>
+            </li>
+          </ul>
+        </div>
+        <!--CONTACTS COLUMN-->
+        <div class="col">
+          <h3>
+            CONTACTS
+            <div class="underline"><span></span></div>
+          </h3>
+          <div class="social-menu">
+            <ul>
+              <a href="" target="_blank">
+                <li id="social-twitter"><i class="fab fa-2x fa-twitter"></i></li>
+              </a>
+              <a href="" target="_blank">
+                <li id="social-github"><i class="fab fa-2x fa-github"></i></li>
+              </a>
+              <a href="" target="_blank">
+                <li id="social-linkedin"><i class="fab fa-2x fa-linkedin-in"></i></li>
+              </a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+
+    let preloader = document.querySelector(".loading-wrapper");
+    function myFunction() {
+      preloader.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    let navbar = document.querySelector("#nav");
+    let navmenu = document.querySelector("#navmenu");
+
+    window.onscroll = function () {
+      if (window.pageYOffset >= navmenu.offsetTop) {
+        navbar.classList.add("sticky");
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    };
+
+    window.onscroll = () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('nav-active');
+      } else {
+        navbar.classList.remove('nav-active');
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
+</html>

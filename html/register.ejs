@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../images/favicon-enhanced.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
+
+    :root {
+      --main-icon-color: #5328af;
+      --main-bg-color: #f3f3fb;
+    }
+
+    body {
+      overflow: scroll;
+      background-color: var(--main-bg-color);
+      font-family: 'Poppins';
+    }
+
+    .login {
+      padding: 8em 10em;
+      padding-right: 0em;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+
+    #load {
+      margin: auto;
+      width: 100%;
+      height: -webkit-fill-available;
+      position: fixed;
+      background: #fff url(/images/Spin-Preloader-1.gif) no-repeat center;
+      z-index: 9999999;
+    }
+
+    .register {
+      padding: 8em 10em;
+      padding-right: 0em;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+
+    .welcome h1 {
+      font-family: "Prompt", sans-serif;
+      font-weight: 500;
+      margin: 0% 0%;
+      font-size: 1.8em;
+    }
+
+    .welcome span {
+      font-family: "Poppins";
+      color: #8e8d8d;
+      font-size: small;
+    }
+
+    .inputs {
+      margin: 2.2em 0em;
+      margin-bottom: 0em;
+    }
+
+    .inputs span {
+      font-family: "Poppins";
+      font-weight: 600;
+      font-size: small;
+    }
+
+    .inputbox {
+      width: 300px;
+      margin: 0.8em 0em;
+      display: inline-block;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      padding: 8px 20px;
+      border: 1px solid #c7c7c7;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      font: normal 16px / normal "Poppins";
+      color: #000000;
+      -o-text-overflow: clip;
+      text-overflow: clip;
+    }
+
+    .forgotpass span {
+      font-family: "Poppins";
+      font-weight: 650;
+      font-size: small;
+      color: var(--main-icon-color);
+      display: flex;
+      padding: 1em 17.6em;
+      cursor: pointer;
+    }
+
+    .signin {
+      margin: 0.5em 0em;
+      width: 320px;
+      display: inline-block;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      cursor: pointer;
+      padding: 10px 10px;
+      border: none;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      font: normal 16px / normal "Poppins";
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      -o-text-overflow: clip;
+      text-overflow: clip;
+      background: var(--main-icon-color);
+      background: linear-gradient(0deg,
+          rgba(96, 9, 240, 1) 0%,
+          var(--main-icon-color) 100%);
+      border: none;
+    }
+
+    .signin:before {
+      height: 0%;
+      width: 2px;
+    }
+
+    .signin:hover {
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+        -4px -4px 6px 0 rgba(116, 125, 136, 0.5),
+        inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .back {
+      margin-top: -3.5%;
+    }
+
+    .back-1 {
+      margin-top: -0.6%;
+    }
+
+    .signupline {
+      font-family: "Poppins";
+      color: #8e8d8d;
+      font-size: small;
+      padding: 1em 5em;
+    }
+
+    .signupbutton,
+    .signinbutton {
+      font-family: "Poppins";
+      font-weight: 650;
+      font-size: small;
+      color: var(--main-icon-color);
+      cursor: pointer;
+    }
+
+    img {
+      position: absolute;
+      margin: 6em 32em;
+      padding: 0em 10em;
+      width: 55%;
+      float: right;
+      box-sizing: border-box;
+    }
+
+    .register {
+      display: none;
+    }
+
+    @media screen and (max-width: 1096px) {
+      img {
+        margin-top: 12%;
+        height: 50%;
+      }
+    }
+
+    @media screen and (max-width: 970px) {
+      img {
+        margin: 6em 25em;
+        width: 70%;
+      }
+    }
+
+    @media screen and (max-width: 720px) {
+      img {
+        margin: 0em 0em;
+        width: 80%;
+        height: 40%;
+        padding-bottom: 12%;
+      }
+
+      .login {
+        margin-top: 8%;
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      img {
+        width: 100%;
+        height: 42%;
+        padding-bottom: 20%;
+      }
+    }
+
+    @media screen and (max-width: 484px) {
+      img {
+        width: 140%;
+        margin-top: 15%;
+      }
+
+      .login {
+        margin-top: 45%;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      img {
+        width: 150%;
+        height: 55%;
+        margin-top: 20%;
+      }
+
+      .login {
+        margin-top: 60%;
+      }
+    }
+
+    #error-up, #error-low, #error-dig, #error-mm{
+      display: none;
+      color: red;
+    }
+
+    #error-mm{
+      margin-bottom: -40px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <title>SereneSoul - Register</title>
+  <style>
+    .register1 {
+      padding-left: 20vh;
+      padding-top: 17vh;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/register" method="post">
+    <img src="/images/signupill.png" alt="" />
+
+    <div class="register1">
+
+      <div class="welcome">
+        <h1 class="titletext">Create an account</h1>
+        <span>Let's get started.</span>
+      </div>
+      <% if(message){ %>
+        <span style="color: white;font-weight:600; border-radius: 4px; background-color: #fe4d4d; padding: 2px;">
+          <%= message %>
+        </span>
+      <% } %>
+
+      <div class="inputs" id="inputs">
+        <span>Username<br /></span>
+        <input class="inputbox" name="username" placeholder="Enter your username" /><br />
+        <span>Email<br /></span>
+        <input class="inputbox" name="email" placeholder="Enter your email" /><br />
+        <span>Password<br /></span>
+        <input type="password" name="password" class="inputbox" placeholder="••••••••" id="id_password"
+          onkeyup="valid_pass()">
+        <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i><br>
+        <div id="error-up">One uppercase &#10006</div>
+        <div id="error-low">One lowercase &#10006</div>
+        <div id="error-dig">One digit &#10006</div>
+        <div id="error-mm">8 minimum, 25 maximum characters &#10006</div><br><br>
+      </div>
+
+      <p class="back-1"><a class="tag1" href="/">&#8592; Back</a></p>
+      <div class="button">
+        <input type="submit" class="signin" value="Register">
+      </div>
+      <div class="signupline">
+        <span>Already have an account?</span>
+        <span class="signinbutton"><a href="/login">Sign in</a> </span>
+      </div>
+    </div>
+  </form>
+  <script>
+    const form = document.querySelector('form');
+    
+    function valid_pass() {
+      var pass = document.getElementById('id_password').value;
+      var up = document.getElementById('error-up');
+      var low = document.getElementById('error-low');
+      var dig = document.getElementById('error-dig');
+      var mm = document.getElementById('error-mm');
+      up.style.display = 'block';
+      low.style.display = 'block';
+      dig.style.display = 'block';
+      mm.style.display = 'block';
+      if (pass.match(/[A-Z]/)) {
+        up.innerHTML = "One uppercase &#10004";
+        up.style.color = "green";
+      }else{
+        up.innerHTML = "One uppercase &#10006";
+        up.style.color = "red";
+      }
+      if (pass.match(/[a-z]/)) {
+        low.innerHTML = "One lowercase &#10004";
+        low.style.color = "green";
+      }else{
+        low.innerHTML = "One lowercase &#10006";
+        low.style.color = "red";
+      }
+      if (pass.match(/[0-9]/)) {
+        dig.innerHTML = "One digit &#10004";
+        dig.style.color = "green";
+      }else{
+        dig.innerHTML = "One digit &#10006";
+        dig.style.color = "red";
+      }
+      if (pass.match(/(?=.{8,25}$)/)) {
+        mm.innerHTML = "8 minimum, 25 maximum characters &#10004";
+        mm.style.color = "green";
+      }else{
+        mm.innerHTML = "8 minimum, 25 maximum characters &#10006";
+        mm.style.color = "red";
+      }
+    }
+
+
+    form.addEventListener('submit', function (event) {
+      const passwordInput = document.getElementById('id_password').value;
+      if (!passwordInput.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,25}$/)) {
+        alert("Password doesn't match requirements.");
+        event.preventDefault();
+        window.location.href = "/register";
+      }
+    });
+  </script>
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#id_password');
+
+    togglePassword.addEventListener('click', function (e) {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye-slash');
+    });
+  </script>
+</body>
+
+</html>
