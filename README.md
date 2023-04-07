@@ -1,10 +1,10 @@
 # ExpressApp
 
-Simple web application that provides services to people seeking mindfulness.
+SereneSoul - Simple web application that provides services to people seeking mindfulness.
 
 ## My Contribution
 
-The entire backend is powered by ExpressJS on NodeJS, along with MongoDB database - which is hosted online on Mongo Atlas.
+My main contribution is on the backend. The entire backend is powered by ExpressJS on NodeJS, along with MongoDB database - which is hosted online on a Mongo Atlas Cluster.
 
 ### How to run
 
